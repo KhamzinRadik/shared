@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	//привет проверяющий
+	
 	ConverterJSON shared;
 	
 	return 0;

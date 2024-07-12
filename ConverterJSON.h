@@ -8,8 +8,6 @@
 using json = nlohmann::json;
 using namespace std;
 
-
-
 class ConverterJSON {
 public:
 	nlohmann::json example;
@@ -17,7 +15,10 @@ public:
 	
 	ConverterJSON()
 	{
-		ifstream file("D:\\C++\\itog\\search_engine\\config.json");
+		std::string path_file = "D:\\gitClone\\shared\\config.json";
+	
+		ifstream file(path_file);
+
 
 		if (!file.is_open()) 
 		{ std::cout << " file not open " << endl;
@@ -56,18 +57,12 @@ public:
 			std::cout << "max_responses   :  " << example["config"]["max_responses"] << '\n';
 
 		}
-
-			
-			
-		
-
-
-
-			
+	
 	}
 
 	std::vector<std::string> GetTextDocuments()
 		{
+		std::string parth_file_txt = "D:\\gitClone\\shared\\resources\\";
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])
@@ -78,7 +73,7 @@ public:
 			
 			std::string str;
 
-			ifstream file_txt("D:\\C++\\itog\\search_engine\\resources\\" + put[i]);
+			ifstream file_txt(parth_file_txt + put[i]);
 
 			if (file_txt.is_open())
 			{
@@ -93,11 +88,11 @@ public:
 
 
 			}
-			//for (int i = 0; i < put.size(); i++)//вывод пути
-			//{
-			//	std::cout <<"put "<<i<<" "<< put[i] << std::endl;
+			for (int i = 0; i < put.size(); i++)//вывод пути
+			{
+				std::cout <<"put "<<i<<" "<< put[i] << std::endl;
 
-			//}
+			}
 			return txt_file;
 		}
 		

@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-  // cfkfv
+//салам
 #include <nlohmann/Json.hpp>
 #include <chrono>
 #include <thread>
@@ -15,17 +15,11 @@ public:
 	
 	ConverterJSON()
 	{
-<<<<<<< HEAD
-		ifstream file("C:\\Users\\Admin\\source\\repos\\KhamzinRadik\\shared\\config.json"); 
-		//ifstream file{"config.json"};
-		
-=======
 		std::string path_file = "D:\\gitClone\\shared\\config.json";
 	
 		ifstream file(path_file);
 
 
->>>>>>> ec83c18c5754ceb9c138dec048de77b2fdd3de24
 		if (!file.is_open()) 
 		{ std::cout << " file not open " << endl;
 
@@ -80,13 +74,8 @@ public:
 			
 			std::string str;
 
-<<<<<<< HEAD
-			ifstream file_txt("C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\" + put[i]);
-		
-=======
 			ifstream file_txt(parth_file_txt + put[i]);
 
->>>>>>> ec83c18c5754ceb9c138dec048de77b2fdd3de24
 			if (file_txt.is_open())
 			{
 				std::getline(file_txt, str);

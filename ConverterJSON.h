@@ -17,10 +17,12 @@ public:
 	
 	ConverterJSON()
 	{
-		ifstream file("D:\\C++\\itog\\search_engine\\config.json");
-
+		ifstream file("C:\\Users\\Admin\\source\\repos\\KhamzinRadik\\shared\\config.json"); 
+		//ifstream file{"config.json"};
+		
 		if (!file.is_open()) 
 		{ std::cout << " file not open " << endl;
+
 		return;
 		}
 		else
@@ -78,8 +80,8 @@ public:
 			
 			std::string str;
 
-			ifstream file_txt("D:\\C++\\itog\\search_engine\\resources\\" + put[i]);
-
+			ifstream file_txt("C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\" + put[i]);
+		
 			if (file_txt.is_open())
 			{
 				std::getline(file_txt, str);
@@ -93,11 +95,11 @@ public:
 
 
 			}
-			//for (int i = 0; i < put.size(); i++)//вывод пути
-			//{
-			//	std::cout <<"put "<<i<<" "<< put[i] << std::endl;
+			for (int i = 0; i < put.size(); i++)//вывод пути
+			{
+				std::cout <<"put "<<i<<" "<< put[i] << std::endl;
 
-			//}
+			}
 			return txt_file;
 		}
 		

@@ -1,10 +1,10 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-//салам
 #include <nlohmann/Json.hpp>
 #include <chrono>
 #include <thread>
+#include < stdio.h >
 using json = nlohmann::json;
 using namespace std;
 
@@ -15,33 +15,34 @@ public:
 	
 	ConverterJSON()
 	{
+		GetTextDocuments();
+		
+		GetResponsesLimit();
+	}
+
+	std::vector<std::string> GetTextDocuments()
+	{
+		
 		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
-	
+
 		ifstream file(path_file);
 
 
-		if (!file.is_open()) 
-		{ std::cout << " file not open " << endl;
+		if (!file.is_open())
+		{
+			std::cout << " file not open " << endl;
 
-		return;
 		}
 		else
 		{
-			std::cout<< "file open" << endl;
+			std::cout << "file open" << endl;
 		}
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-		system("cls");
-		
+		//std::this_thread::sleep_for(std::chrono::seconds(1));
+		//system("cls");
+
 		example = nlohmann::json::parse(file);
 		file.close();
-		get_the_path();
-		GetTextDocuments();
-	}
-	void get_the_path()
-	{
-		
 
-	
 		if (example.empty())
 		{
 			std::cout << "config file is missing. " << std::endl;
@@ -52,26 +53,27 @@ public:
 		}
 		else
 		{
-
-			std::cout << "name programm   : " << example["config"]["name"] << '\n';
-			std::cout << "version programm: " << example["config"]["version"] << '\n';
-			std::cout << "max_responses   :  " << example["config"]["max_responses"] << '\n';
-
+			;
+			
+			
+			soderjimoe.push_back("name: " + example["config"]["name"].get<std::string>());
+			soderjimoe.push_back("version: " + example["config"]["version"].get<std::string>());
+			soderjimoe.push_back("max_responses: " + std::to_string(example["config"]["max_responses"].get<int>()));
+			for (const auto& str : soderjimoe) {
+				std::cout << str << std::endl;
+			}
 		}
-	
-	}
 
-	std::vector<std::string> GetTextDocuments()
-		{
+		//////
 		std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])
 			put.push_back(filename);
 
-			for (int i = 0; i < put.size(); i++)
-			{
-			
+		for (int i = 0; i < put.size(); i++)
+		{
+
 			std::string str;
 
 			ifstream file_txt(parth_file_txt + put[i]);
@@ -88,14 +90,15 @@ public:
 
 
 
-			}
-			for (int i = 0; i < put.size(); i++)//вывод пути
-			{
-				std::cout <<"put "<<i<<" "<< put[i] << std::endl;
-
-			}
-			return txt_file;
 		}
+		for (int i = 0; i < put.size(); i++)//вывод пути
+		{
+			std::cout << "put " << i << " " << put[i] << std::endl;
+
+		}
+		return soderjimoe;
+
+	}
 		
 	
 	
@@ -105,7 +108,18 @@ public:
 	* количества ответов на один запрос
 	* @return
 	*/
-	int GetResponsesLimit();
+	int GetResponsesLimit()
+	{
+		int MAXrepost = 0;
+		std::string str = soderjimoe[soderjimoe.size() - 1];
+		std::cout << "str " << str << std::endl;
+		std::cout << "MAX " << soderjimoe[soderjimoe.size()-1] << std::endl;
+		//const char * c = soderjimoe[soderjimoe.size() - 1].c_str();
+		MAXrepost= stoi(str);
+		
+		std::cout <<"MAX " <<MAXrepost << std::endl;
+		return MAXrepost;
+	}
 
 
 

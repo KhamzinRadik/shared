@@ -15,7 +15,7 @@ public:
 	
 	ConverterJSON()
 	{
-		std::string path_file = "D:\\gitClone\\shared\\config.json";
+		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
 	
 		ifstream file(path_file);
 
@@ -29,7 +29,7 @@ public:
 		{
 			std::cout<< "file open" << endl;
 		}
-		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 		system("cls");
 		
 		example = nlohmann::json::parse(file);
@@ -63,7 +63,7 @@ public:
 
 	std::vector<std::string> GetTextDocuments()
 		{
-		std::string parth_file_txt = "D:\\gitClone\\shared\\resources\\";
+		std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])

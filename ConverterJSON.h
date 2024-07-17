@@ -11,19 +11,31 @@ using namespace std;
 class ConverterJSON {
 public:
 	nlohmann::json example;
+	nlohmann::json Jrequests;
+
 	std::vector<std::string> soderjimoe;
-	
+	int MAXrepost;
+
 	ConverterJSON()
 	{
 		GetTextDocuments();
 		
 		GetResponsesLimit();
+
+		GetRequests();
+
+		for (const auto& str : soderjimoe) {
+			std::cout << str << std::endl;
+		}
+		cout << "MAXrepost =" << MAXrepost;
+
 	}
 
 	std::vector<std::string> GetTextDocuments()
 	{
 		
 		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
+		//std::string path_file = ".\\config.json";
 
 		ifstream file(path_file);
 
@@ -31,7 +43,7 @@ public:
 		if (!file.is_open())
 		{
 			std::cout << " file not open " << endl;
-
+			return soderjimoe;
 		}
 		else
 		{
@@ -53,15 +65,13 @@ public:
 		}
 		else
 		{
-			;
+			
 			
 			
 			soderjimoe.push_back("name: " + example["config"]["name"].get<std::string>());
 			soderjimoe.push_back("version: " + example["config"]["version"].get<std::string>());
 			soderjimoe.push_back("max_responses: " + std::to_string(example["config"]["max_responses"].get<int>()));
-			for (const auto& str : soderjimoe) {
-				std::cout << str << std::endl;
-			}
+			
 		}
 
 		//////
@@ -91,11 +101,11 @@ public:
 
 
 		}
-		for (int i = 0; i < put.size(); i++)//вывод пути
+		/*for (int i = 0; i < put.size(); i++)//вывод пути
 		{
 			std::cout << "put " << i << " " << put[i] << std::endl;
 
-		}
+		}*/
 		return soderjimoe;
 
 	}
@@ -110,14 +120,10 @@ public:
 	*/
 	int GetResponsesLimit()
 	{
-		int MAXrepost = 0;
+
+		MAXrepost = (example["config"]["max_responses"].get<int>());
 		std::string str = soderjimoe[soderjimoe.size() - 1];
-		std::cout << "str " << str << std::endl;
-		std::cout << "MAX " << soderjimoe[soderjimoe.size()-1] << std::endl;
-		//const char * c = soderjimoe[soderjimoe.size() - 1].c_str();
-		MAXrepost= stoi(str);
 		
-		std::cout <<"MAX " <<MAXrepost << std::endl;
 		return MAXrepost;
 	}
 
@@ -130,7 +136,52 @@ public:
 	* Метод получения запросов из файла requests.json
 	* @return возвращает список запросов из файла requests.json
 	*/
-	std::vector<std::string> GetRequests();
+	std::vector<std::string> GetRequests()
+	{
+		
+		std::vector<std::string> Grequests;
+		std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";
+		ifstream JRfile(path_file);
+
+		if (!JRfile.is_open())
+		{
+			std::cout << " JR file not open " << endl;
+			return Grequests;
+		}
+		else
+		{
+			std::cout << "JR file open" << endl;
+		}
+
+		JRfile.close();
+		/*Jrequests = nlohmann::json::parse(JRfile);
+
+		if (!Jrequests.empty())
+		{
+			std::cout << "config file is missing. " << std::endl;
+		}
+		if (!Jrequests.contains("requests"))
+		{
+			std::cout << " 	config file is empty " << std::endl;
+		}
+		else
+		{
+
+			//Grequests.push_back(Jrequests["requests"].get <std::string>());
+			//cout << "Grequests " << Grequests[0];
+			//
+
+			//soderjimoe.push_back("name: " + example["config"]["name"].get<std::string>());
+			//soderjimoe.push_back("version: " + example["config"]["version"].get<std::string>());
+			//soderjimoe.push_back("max_responses: " + std::to_string(example["config"]["max_responses"].get<int>()));
+
+		}
+
+
+		
+		*/
+		return Grequests;
+	}
 
 	// Положить в файл answers.json результаты поисковых запросов
 

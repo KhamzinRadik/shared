@@ -34,8 +34,9 @@ public:
 	std::vector<std::string> GetTextDocuments()
 	{
 		
-		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
-		//std::string path_file = ".\\config.json";
+		//std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
+		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
+		
 
 		ifstream file(path_file);
 
@@ -75,7 +76,8 @@ public:
 		}
 
 		//////
-		std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
+		//std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
+		std::string parth_file_txt = "D:\\gitClone\\KhamzinRadik\\shared\\resources\\";
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])
@@ -140,7 +142,8 @@ public:
 	{
 		
 		std::vector<std::string> Grequests;
-		std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";
+		//std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
+		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\ConverterJSON.h";//дома
 		ifstream JRfile(path_file);
 
 		if (!JRfile.is_open())
@@ -150,36 +153,24 @@ public:
 		}
 		else
 		{
+			
 			std::cout << "JR file open" << endl;
+			Jrequests = nlohmann::json::parse(JRfile);
+			
 		}
+
+	
+		
 
 		JRfile.close();
-		/*Jrequests = nlohmann::json::parse(JRfile);
-
-		if (!Jrequests.empty())
-		{
-			std::cout << "config file is missing. " << std::endl;
-		}
-		if (!Jrequests.contains("requests"))
-		{
-			std::cout << " 	config file is empty " << std::endl;
-		}
-		else
-		{
-
-			//Grequests.push_back(Jrequests["requests"].get <std::string>());
-			//cout << "Grequests " << Grequests[0];
-			//
-
-			//soderjimoe.push_back("name: " + example["config"]["name"].get<std::string>());
-			//soderjimoe.push_back("version: " + example["config"]["version"].get<std::string>());
-			//soderjimoe.push_back("max_responses: " + std::to_string(example["config"]["max_responses"].get<int>()));
-
-		}
-
 
 		
-		*/
+
+		
+		
+
+		
+		
 		return Grequests;
 	}
 

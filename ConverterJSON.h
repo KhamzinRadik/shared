@@ -14,6 +14,7 @@ public:
 	nlohmann::json Jrequests;
 
 	std::vector<std::string> soderjimoe;
+	std::vector<std::string> Grequests;
 	int MAXrepost;
 
 	ConverterJSON()
@@ -27,15 +28,18 @@ public:
 		for (const auto& str : soderjimoe) {
 			std::cout << str << std::endl;
 		}
-		cout << "MAXrepost =" << MAXrepost;
-
+		cout << "MAXrepost =" << MAXrepost <<std:: endl;
+		for (const auto& str : Grequests) {
+			std::cout << str << std::endl;
+		}
+		
 	}
 
 	std::vector<std::string> GetTextDocuments()
 	{
 		
-		//std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
-		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
+		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
+		//std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
 		
 
 		ifstream file(path_file);
@@ -76,8 +80,8 @@ public:
 		}
 
 		//////
-		//std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
-		std::string parth_file_txt = "D:\\gitClone\\KhamzinRadik\\shared\\resources\\";
+		std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
+		//std::string parth_file_txt = "D:\\gitClone\\KhamzinRadik\\shared\\resources\\";
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])
@@ -141,9 +145,9 @@ public:
 	std::vector<std::string> GetRequests()
 	{
 		
-		std::vector<std::string> Grequests;
-		//std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
-		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\ConverterJSON.h";//дома
+		
+		std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
+		//std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\ConverterJSON.h";//дома
 		ifstream JRfile(path_file);
 
 		if (!JRfile.is_open())
@@ -156,7 +160,8 @@ public:
 			
 			std::cout << "JR file open" << endl;
 			Jrequests = nlohmann::json::parse(JRfile);
-			
+			for (auto& filename : Jrequests["requests"])
+				Grequests.push_back(filename);
 		}
 
 	

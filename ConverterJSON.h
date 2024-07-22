@@ -24,15 +24,20 @@ public:
 		GetResponsesLimit();
 
 		GetRequests();
+		//proverka();
+		
+		
+	}
 
+	void proverka()
+	{
 		for (const auto& str : soderjimoe) {
 			std::cout << str << std::endl;
 		}
-		cout << "MAXrepost =" << MAXrepost <<std:: endl;
+		cout << "MAXrepost =" << MAXrepost << std::endl;
 		for (const auto& str : Grequests) {
 			std::cout << str << std::endl;
 		}
-		
 	}
 
 	std::vector<std::string> GetTextDocuments()
@@ -152,13 +157,13 @@ public:
 
 		if (!JRfile.is_open())
 		{
-			std::cout << " JR file not open " << endl;
+			std::cout << " JRequests file not open " << endl;
 			return Grequests;
 		}
 		else
 		{
 			
-			std::cout << "JR file open" << endl;
+			std::cout << "JRequests file open" << endl;
 			Jrequests = nlohmann::json::parse(JRfile);
 			for (auto& filename : Jrequests["requests"])
 				Grequests.push_back(filename);

@@ -24,7 +24,7 @@ public:
 		GetResponsesLimit();
 
 		GetRequests();
-		//proverka();
+		proverka();
 		
 		
 	}
@@ -43,8 +43,8 @@ public:
 	std::vector<std::string> GetTextDocuments()
 	{
 		
-		std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
-		//std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
+		//std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
+		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
 		
 
 		ifstream file(path_file);
@@ -85,8 +85,9 @@ public:
 		}
 
 		//////
-		std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
-		//std::string parth_file_txt = "D:\\gitClone\\KhamzinRadik\\shared\\resources\\";
+		//std::string parth_file_txt = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\resources\\";
+		std::string parth_file_txt = "D:\\gitClone\\KhamzinRadik\\shared\\resources\\";
+	
 		std::vector <std::string> txt_file;
 		std::vector <std::string> put;
 		for (auto& filename : example["files"])
@@ -151,8 +152,8 @@ public:
 	{
 		
 		
-		std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
-		//std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\ConverterJSON.h";//дома
+		//std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
+		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\requests.json";//дома
 		ifstream JRfile(path_file);
 
 		if (!JRfile.is_open())

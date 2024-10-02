@@ -5,6 +5,7 @@
 #include <chrono>
 #include <thread>
 #include < stdio.h >
+#include"parth.h"
 using json = nlohmann::json;
 using namespace std;
 
@@ -41,13 +42,12 @@ public:
 	}
 
 	std::vector<std::string> GetTextDocuments()
-	{
+	{		
 		
-		//std::string path_file = "C:\\Users\\Admin\\Source\\Repos\\KhamzinRadik\\shared\\config.json";
-		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\config.json";
-		
+		//std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\bin\\config.json";
+		//CONFIGS_DIR;
 
-		ifstream file(path_file);
+		ifstream file(CONFIGS_DIR);
 
 
 		if (!file.is_open())
@@ -153,7 +153,7 @@ public:
 		
 		
 		//std::string path_file = "C:\\Users\\Admin\\source\\repos\\shared\\requests.json";//на работе 
-		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\requests.json";//дома
+		std::string path_file = "D:\\gitClone\\KhamzinRadik\\shared\\bin\\requests.json";//дома
 		ifstream JRfile(path_file);
 
 		if (!JRfile.is_open())
@@ -187,6 +187,6 @@ public:
 
 	// Положить в файл answers.json результаты поисковых запросов
 
-	void putAnswers(std::vector<std::vector<std::pair<int, float>>>answers);
+	//void putAnswers(std::vector<std::vector<std::pair<int, float>>>answers);
 	
 };

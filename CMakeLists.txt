@@ -18,7 +18,7 @@ endif()
 project ("search_engine")
 
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (search_engine "search_engine.cpp" "search_engine.h"  )
+add_executable (search_engine "search_engine.cpp" "search_engine.h"   "parth.h")
 
 
 target_link_libraries(search_engine PRIVATE nlohmann_json::nlohmann_json)
